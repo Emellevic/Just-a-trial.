@@ -1,0 +1,12 @@
+letters = ['a','b','c', 'a', 'b', 'c', 'd','e','f','g','h','i','e','f','g','j','k','l','j','o','k','l','m','n','o','p','q','r','s','t','u','v','b','a','f','x','w','x','y','z','x','y','z']
+info = str(letters)
+letters = info.upper()
+
+choice = input('Enter your lettter: ')
+choice = choice.upper()
+choice = str(choice)
+frequency = letters.count(choice)
+if choice in letters:
+    print(f'valid choice! {choice} appears {frequency}')
+else:
+    print('invalid choice! try again...')
