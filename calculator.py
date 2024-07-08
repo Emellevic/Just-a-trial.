@@ -1,10 +1,7 @@
-num1 = (input("Enter 1st digit: "))
-operator = input("Enter operator: ")
-num2 = (input("Enter 2nd digit: "))
 
 
 
-def calc(num1:int, operator, num2:int) -> int:
+def calc() -> int:
     """ A simple calculator
 
     Args: 
@@ -14,50 +11,49 @@ def calc(num1:int, operator, num2:int) -> int:
     Returns: 
         The result of the operation carried out!
     """
+#Error handling for inputs
+    try:
+        num1 = int(input("Enter 1st digit: "))
+    except ValueError:
+        print("Error.Enter only digits!")
+        return
+    operator = input("Enter operator (eg +,-,*,** or /): ")
 
-    if operator == "*":
-        try:
-            ans =  int(num1)*int(num2)
-            print(ans)
-        except ValueError:
-            print ("Error! 1st and 2nd digits should be integers!")
-        return 
-    elif operator == "x":
-        try:
-            ans =  int(num1)*int(num2)
-            print(ans)
-        except ValueError:
-            print ("Error! 1st and 2nd digits should be integers!")
-        return 
-    elif operator == "/":
-        try:
-            ans =  int(num1)/int(num2)
-            print(ans)
-        except ValueError:
-            print ("Error! 1st and 2nd digits should be integers!")
-        return
-    elif operator == "+":
-        try:
-            ans =  int(num1)+int(num2)
-            print(ans)
-        except ValueError:
-            print ("Error! 1st and 2nd digits should be integers!")
-        return
-    elif operator == "-":
-        try:
-            ans =  int(num1)-int(num2)
-            print(ans)
-        except ValueError:
-            print ("Error! 1st and 2nd digits should be integers!")
+    if operator not in ("+", "-", "/", "*", "**"):
+        print("Invalid operator!")
         return
     
-    else:
-        print("Invalid Operator!")
+    try:
+        num2 = int(input("Enter 2nd digit: "))
+    except ValueError:
+        print("Error. Enter only digits!")
         return
-(calc(num1,operator,num2))     
-# try:
-#     (calc(num1,operator,num2))
-# except TypeError:
-#     print("oops!")
-# except ValueError:
-#     print("oops")
+   
+#processing
+
+    if operator == "*":
+        ans =  num1*num2
+        print(ans)
+        
+ 
+    elif operator == "/":
+        try:
+            ans =  num1/num2
+            print(ans)
+        except ZeroDivisionError:
+            print("Error! Division by Zero not allowed.")
+
+    elif operator == "+":
+        ans =  num1+num2
+        print(ans)
+
+    elif operator == "-":
+        ans =  num1-num2
+        print(ans)
+
+    elif operator =="**":
+        ans = num1**num2
+        print(ans)
+    else:
+        return
+calc()     
